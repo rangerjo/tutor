@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  package_name: tutor
+  package_version: 0.1.0
+  repo_path: ~/.local/share/typst/packages/local
+
+tasks:
+  default:
+    cmds:
+      - mkdir -p {{.repo_path}}/{{.package_name}}-{{.package_version}}
+      - cp -r ./* {{.repo_path}}/{{.package_name}}-{{.package_version}}
+    silent: false
