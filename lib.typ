@@ -48,8 +48,12 @@
 
 #let lines(count, cfg) = {
   let content = []
+  let spacing = cfg.utils.lines.spacing
+  if type(spacing) == "string" {
+    spacing = eval(spacing)
+  }
   for n in range(count) {
-    content += [#v(cfg.utils.lines.spacing) #line(length:100%) ]
+    content += [#v(spacing) #line(length:100%) ]
   }
   return content
 }
