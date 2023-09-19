@@ -9,7 +9,10 @@
         sym_true: "☒",
         sym_false: "☐",
         sym_question: "☐"
-      )
+      ),
+      totalpoints: (
+        outline: false,
+      ),
     )
   )
   return cfg
@@ -34,11 +37,11 @@
 }
 
 
-#let totalpoints(outline:false) = {
+#let totalpoints(cfg) = {
   locate(loc => {
     let c = state("points", 0.0)
     let points = c.final(loc)
-    if outline {
+    if cfg.utils.totalpoints.outline {
       points = points/2
     }
     [ #points ]
@@ -46,7 +49,7 @@
   )
 }
 
-#let lines(count, cfg) = {
+#let lines(cfg, count) = {
   let content = []
   let spacing = cfg.utils.lines.spacing
   if type(spacing) == "string" {

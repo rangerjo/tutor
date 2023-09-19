@@ -1,0 +1,35 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  version: "1.0"
+  docname: Exam
+  file: main
+  builddir: build
+
+tasks:
+  default:
+    deps: [mkdirs, doc, docsol]
+  doc:
+    cmds:
+      # set sol=false in tutor.toml
+      - dasel put -f tutor.toml -r toml -t bool -v false "sol"
+      - typst compile {{.file}}.typ {{.builddir}}/{{.docname}}.{{.version}}.pdf
+  docsol:
+    cmds: 
+      # set sol=true in tutor.toml
+      - dasel put -f tutor.toml -r toml -t bool -v true "sol"
+      - typst compile {{.file}}.typ {{.builddir}}/{{.docname}}_solution.{{.version}}.pdf
+  mkdirs:
+    cmds:
+      - mkdir -p {{.builddir}}
+  clean:
+    cmds:
+      - rm -r {{.builddir}}
+  watch:
+    cmds:
+      - typst watch {{.file}}.typ {{.builddir}}/{{.docname}}.pdf
+  open:
+    cmds:
+      - xdg-open {{.builddir}}/{{.docname}}.{{.version}}.pdf

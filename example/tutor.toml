@@ -1,0 +1,14 @@
+level = 1
+sol = true
+
+[utils]
+[utils.checkbox]
+sym_false = '☐'
+sym_question = '☐'
+sym_true = '☒'
+
+[utils.lines]
+spacing = '8mm'
+
+[utils.totalpoints]
+outline = true
