@@ -11,16 +11,21 @@ vars:
 tasks:
   default:
     deps: [mkdirs, doc, docsol]
+  copy_src:
+    cmds:
+      - cp {{.file}}.typ {{.builddir}}/
+      - cp {{.file}}.typ {{.builddir}}/{{.file}}_sol.typ
+      - sed "s/#(cfg.sol = false)/#(cfg.sol = true)/" --in-place {{.builddir}}/{{.file}}_sol.typ
+      - cp tutor.toml {{.builddir}}/
+      - cp -r src {{.builddir}}/src
   doc:
     cmds:
-      # set sol=false in tutor.toml
-      - dasel put -f tutor.toml -r toml -t bool -v false "sol"
-      - typst compile {{.file}}.typ {{.builddir}}/{{.docname}}.{{.version}}.pdf
+      - cd {{.builddir}} && typst compile {{.file}}.typ {{.docname}}.{{.version}}.pdf
+    deps: [copy_src]
   docsol:
     cmds: 
-      # set sol=true in tutor.toml
-      - dasel put -f tutor.toml -r toml -t bool -v true "sol"
-      - typst compile {{.file}}.typ {{.builddir}}/{{.docname}}_solution.{{.version}}.pdf
+      - cd {{.builddir}} && typst compile {{.file}}_sol.typ {{.docname}}_solution.{{.version}}.pdf
+    deps: [copy_src]
   mkdirs:
     cmds:
       - mkdir -p {{.builddir}}
