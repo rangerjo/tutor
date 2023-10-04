@@ -13,3 +13,10 @@ tasks:
       - mkdir -p {{.repo_path}}/{{.package_name}}/{{.package_version}}
       - cp -r ./* {{.repo_path}}/{{.package_name}}/{{.package_version}}
     silent: false
+  img:
+    cmds:
+      # conversion to pdf and back forces linked svg of template 
+      # beeing included
+      - inkscape -o imgs/example.pdf imgs/example_template.svg
+      - inkscape -o imgs/example.svg imgs/example.pdf
+      - rm imgs/example.pdf

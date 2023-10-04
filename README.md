@@ -101,9 +101,8 @@ List two differences between HL7v2 and FHIR:
 ```
 
 This would then give the following output in question mode (`#(cfg.sol=false)`)
-![Example document in question mode](imgs/example_question_mode.svg)
 and in solution mode (`#(cfg.sol=true)`):
-![Example document in solution mode](imgs/example_solution_mode.svg)
+![Example document in solution mode](imgs/example.svg)
 
 ## Configuration
 
