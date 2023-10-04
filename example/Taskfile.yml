@@ -38,3 +38,9 @@ tasks:
   open:
     cmds:
       - xdg-open {{.builddir}}/{{.docname}}.{{.version}}.pdf
+  img:
+    cmds:
+      - inkscape -o {{.builddir}}/example_question_mode.svg {{.builddir}}/{{.docname}}.{{.version}}.pdf
+      - inkscape -o {{.builddir}}/example_solution_mode.svg {{.builddir}}/{{.docname}}.{{.version}}.pdf
+      - cp {{.builddir}}/example_question_mode.svg ../imgs/
+      - cp {{.builddir}}/example_solution_mode.svg ../imgs/

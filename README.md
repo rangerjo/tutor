@@ -5,8 +5,8 @@ Utilities to write exams and exercises with integrated solutions. Set the variab
 Currently the following features are supported:
 
 * Automatic total point calculation through the `#points()` and `#totalpoints()` functions.
-* Checkboxes that are either blank or show the solution state using eg. `#checkbox(sol, answer:true)`.
-* Display blank lines for students to write their answer to using eg. `#lines(3)`.
+* Checkboxes that are either blank or show the solution state using eg. `#checkbox(cfg, true)`.
+* Display blank lines allowing students to write their answer using eg. `#lines(cfg, 3)`.
 * A proposition for a project structure allowing self-contained exercises and a mechanism to show or hide the solutions of an exercise.
 
 ## Usage
@@ -101,9 +101,9 @@ List two differences between HL7v2 and FHIR:
 ```
 
 This would then give the following output in question mode (`#(cfg.sol=false)`)
-![Example document in question mode](imgs/example_question_mode.png)
+![Example document in question mode](imgs/example_question_mode.svg)
 and in solution mode (`#(cfg.sol=true)`):
-![Example document in solution mode](imgs/example_solution_mode.png)
+![Example document in solution mode](imgs/example_solution_mode.svg)
 
 ## Configuration
 
@@ -117,7 +117,7 @@ and in solution mode (`#(cfg.sol=true)`):
 #(cfg.utils.lines.spacing = 8mm)
 ```
 
-2. Use an external file to hold the configurations in your prefered format. See [tutor.toml](./example/tutor.toml) for a configuration in TOML. This could then easily be integrated using
+2. Use an external file to hold the configurations in your prefered format. See [tutor.toml](./example/tutor.toml) for a configuration in TOML. Load the configuration into your main document using
 ```
 #let cfg = toml("tutor.toml")
 ```
