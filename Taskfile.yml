@@ -15,8 +15,5 @@ tasks:
     silent: false
   img:
     cmds:
-      # conversion to pdf and back forces linked svg of template 
-      # beeing included
-      - inkscape -o imgs/example.pdf imgs/example_template.svg
+      - typst compile imgs/example.typ imgs/example.pdf --root .
       - inkscape -o imgs/example.svg imgs/example.pdf
-      - rm imgs/example.pdf
