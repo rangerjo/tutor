@@ -66,7 +66,7 @@ Supporting self-contained exercises is one of `tutor`s primary design goals. Eac
 An exercise is a folder that contains an `ex.typ` file along with any other assets (images, source code aso). The following exercise shows a practical usage of the `#checkbox()` and `#points()` functions.
 
 `src/ex1/ex.typ`
-```
+```typst
 #import "@local/tutor:0.3.0": points, checkbox
 
 #let exercise(cfg) = [
@@ -87,7 +87,7 @@ What does FHIR stand for?
 
 Finally this second example shows the `#lines()` function.
 `src/ex2/ex.typ`
-```
+```typst
 #import "@local/tutor:0.3.0": points, lines 
 
 #let exercise(cfg) = [
@@ -110,13 +110,13 @@ and in solution mode (`#(cfg.sol=true)`):
 
 1. Use the `#default_config()` function and patch your configuration. The following example would configure the solution mode and basic line spacings to 8 millimeters:
 
-```
+```typst
 #let cfg = default_config()
 #(cfg.sol = false)
 #(cfg.utils.lines.spacing = 8mm)
 ```
 
 2. Use an external file to hold the configurations in your prefered format. See [tutor.toml](./example/tutor.toml) for a configuration in TOML. Load the configuration into your main document using
-```
+```typst
 #let cfg = toml("tutor.toml")
 ```
