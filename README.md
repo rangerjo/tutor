@@ -34,7 +34,7 @@ Total points: #totalpoints(cfg)
 
 ### Practical Example
 
-Check [example](./example) for a more practical example.
+Check [example](https://github.com/rangerjo/tutor/tree/main/example) for a more practical example.
 
 `tutor` is best used with the following directory and file structure:
 
@@ -102,7 +102,7 @@ List two differences between HL7v2 and FHIR:
 
 This would then give the following output in question mode (`#(cfg.sol=false)`)
 and in solution mode (`#(cfg.sol=true)`):
-![Example document in solution mode](imgs/example.svg)
+![Example document in solution mode](https://raw.githubusercontent.com/rangerjo/tutor/main/imgs/example.svg)
 
 ## Configuration
 
@@ -116,7 +116,7 @@ and in solution mode (`#(cfg.sol=true)`):
 #(cfg.utils.lines.spacing = 8mm)
 ```
 
-2. Use an external file to hold the configurations in your prefered format. See [tutor.toml](./example/tutor.toml) for a configuration in TOML. Load the configuration into your main document using
+2. Use an external file to hold the configurations in your prefered format. See [tutor.toml](https://github.com/rangerjo/tutor/blob/main/example/tutor.toml) for a configuration in TOML. Load the configuration into your main document using
 ```typst
 #let cfg = toml("tutor.toml")
 ```
