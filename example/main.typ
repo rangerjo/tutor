@@ -1,12 +1,12 @@
 
-#import "@local/tutor:0.3.0": totalpoints, lines, default_config
+#import "@local/tutor:0.3.0": totalpoints, lines, default-config
 
 #import "src/ex1/ex.typ" as ex1
 #import "src/ex2/ex.typ" as ex2
 
 #let cfg = toml("tutor.toml")
 #(cfg.sol = false)
-// #let cfg = default_config()
+// #let cfg = default-config()
 // #(cfg.utils.lines.spacing = 8mm)
 
 #set heading(numbering: "1.1")
