@@ -5,9 +5,12 @@
 #import "src/ex2/ex.typ" as ex2
 
 #let cfg = toml("tutor.toml")
-#(cfg.sol = false)
-// #let cfg = default-config()
-// #(cfg.utils.lines.spacing = 8mm)
+
+#if sys.inputs.tutor_sol == "true" {
+  (cfg.sol = true)
+} else if sys.inputs.tutor_sol == "false" {
+  (cfg.sol = false)
+}
 
 #set heading(numbering: "1.1")
 

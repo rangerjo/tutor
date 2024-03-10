@@ -10,34 +10,46 @@ vars:
 
 tasks:
   default:
-    deps: [mkdirs, doc, docsol]
-  copy_src:
     cmds:
-      - cp {{.file}}.typ {{.builddir}}/
-      - cp {{.file}}.typ {{.builddir}}/{{.file}}_sol.typ
-      - sed "s/#(cfg.sol = false)/#(cfg.sol = true)/" --in-place {{.builddir}}/{{.file}}_sol.typ
-      - cp tutor.toml {{.builddir}}/
-      - cp -r src {{.builddir}}/src
-  doc:
-    cmds:
-      - cd {{.builddir}} && typst compile {{.file}}.typ {{.docname}}.{{.version}}.pdf
-    deps: [copy_src]
-  docsol:
-    cmds: 
-      - cd {{.builddir}} && typst compile {{.file}}_sol.typ {{.docname}}_solution.{{.version}}.pdf
-    deps: [copy_src]
+      - go-task --list
+  all:
+    desc: Compile document in question and solution mode.
+    deps: [doc, docsol]
   mkdirs:
     cmds:
       - mkdir -p {{.builddir}}
   clean:
+    desc: Remove all generated files.
     cmds:
       - rm -r {{.builddir}}
-  watch:
+  doc:
+    desc: Compile document in question mode.
     cmds:
-      - typst watch {{.file}}.typ {{.builddir}}/{{.docname}}.pdf
+      - typst compile --input tutor_sol=false {{.file}}.typ {{.builddir}}/{{.docname}}.{{.version}}.pdf
+    deps: [mkdirs]
+  docsol:
+    desc: Compile document in solution mode.
+    cmds: 
+      - typst compile --input tutor_sol=true {{.file}}.typ  {{.builddir}}/{{.docname}}_solution.{{.version}}.pdf
+    deps: [mkdirs]
+  watch:
+    desc: Watch document in question mode.
+    cmds:
+      - typst watch --input tutor_sol=false {{.file}}.typ {{.builddir}}/{{.docname}}.{{.version}}.pdf
+    deps: [mkdirs]
+  watchsol:
+    desc: Watch document in solution mode.
+    cmds:
+      - typst watch --input tutor_sol=true {{.file}}.typ {{.builddir}}/{{.docname}}_solution.{{.version}}.pdf
+    deps: [mkdirs]
   open:
+    desc: Open document in question mode.
     cmds:
       - xdg-open {{.builddir}}/{{.docname}}.{{.version}}.pdf
+  opensol:
+    desc: Open document in solution mode.
+    cmds:
+      - xdg-open {{.builddir}}/{{.docname}}_solution.{{.version}}.pdf
   img:
     cmds:
       - inkscape -o {{.builddir}}/example_question_mode.svg {{.builddir}}/{{.docname}}.{{.version}}.pdf
