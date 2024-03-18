@@ -21,6 +21,7 @@ tasks:
   img:
     desc: "Create images for README.md"
     cmds:
+      - echo "Attention! This does not work (final pdf lacks lines for some mysterious reason...). Create example_mod.png by hand!"
       - typst compile imgs/example.typ imgs/example.pdf --root .
       - inkscape -o imgs/example.svg imgs/example.pdf
   publish:
