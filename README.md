@@ -14,7 +14,7 @@ Currently the following features are supported:
 ### Minimal Example
 
 ```typst
-#import "@local/tutor:0.3.0": points, totalpoints, lines, checkbox, default-config
+#import "@local/tutor:0.4.0": points, totalpoints, lines, checkbox, default-config
 
 #let cfg = default-config()
 // enable solution mode
@@ -51,7 +51,7 @@ Check [example](https://github.com/rangerjo/tutor/tree/main/example) for a more 
 Every directory in `src` holds one self-contained exercise. The exercises can be imported into `main.typ`:
 
 ```typst
-#import "@local/tutor:0.3.0": totalpoints, lines, default-config
+#import "@local/tutor:0.4.0": totalpoints, lines, default-config
 
 #import "src/ex1/ex.typ" as ex1
 #import "src/ex2/ex.typ" as ex2
@@ -67,7 +67,7 @@ An exercise is a folder that contains an `ex.typ` file along with any other asse
 
 `src/ex1/ex.typ`
 ```typst
-#import "@local/tutor:0.3.0": points, checkbox
+#import "@local/tutor:0.4.0": points, checkbox
 
 #let exercise(cfg) = [
 #heading(level:cfg.lvl, [Abbreviation FHIR (#points(1) point)])
@@ -88,7 +88,7 @@ What does FHIR stand for?
 Finally this second example shows the `#lines()` function.
 `src/ex2/ex.typ`
 ```typst
-#import "@local/tutor:0.3.0": points, lines 
+#import "@local/tutor:0.4.0": points, lines 
 
 #let exercise(cfg) = [
 #heading(level:cfg.lvl, [FHIR vs HL7v2 (#points(4.5) points)])
@@ -106,7 +106,7 @@ and in solution mode (`#(cfg.sol=true)`):
 
 ## Configuration
 
-`tutor` is designed to create exams and solutions with one single document source. Furthermore, the individual utilities provided by `tutor` can be configured. This can be done in either of two ways:
+`tutor` is designed to create exams and solutions with one single document source. Furthermore, the individual utilities provided by `tutor` can be configured. This can be done in one of three ways:
 
 1. Use the `#default-config()` function and patch your configuration. The following example would configure the solution mode and basic line spacings to 8 millimeters:
 
@@ -119,4 +119,16 @@ and in solution mode (`#(cfg.sol=true)`):
 2. Use an external file to hold the configurations in your prefered format. See [tutor.toml](https://github.com/rangerjo/tutor/blob/main/example/tutor.toml) for a configuration in TOML. Load the configuration into your main document using
 ```typst
 #let cfg = toml("tutor.toml")
+```
+
+3. Use typst's input feature added with compiler version 0.11.0. Add the following snippet to load the configuration, then overwrite it from the CLI like this: `typst compile --input tutor_sol=true main.typ`
+
+```typst
+#let cfg = toml("tutor.toml")
+
+#if sys.inputs.tutor_sol == "true" {
+  (cfg.sol = true)
+} else if sys.inputs.tutor_sol == "false" {
+  (cfg.sol = false)
+}
 ```

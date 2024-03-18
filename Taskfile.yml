@@ -4,23 +4,30 @@ version: '3'
 
 vars:
   package_name: tutor
-  package_version: 0.3.0
+  package_version: 0.4.0
   local_repo_path: ~/.local/share/typst/packages/local
   preview_repo_path: /home/jonas/temp/packages/packages/preview
 
 tasks:
   default:
     cmds:
+      - go-task --list
+  sync:
+    desc: Copy latest version to local package repository
+    cmds:
       - mkdir -p {{.local_repo_path}}/{{.package_name}}/{{.package_version}}
       - cp -r ./* {{.local_repo_path}}/{{.package_name}}/{{.package_version}}
     silent: false
   img:
+    desc: "Create images for README.md"
     cmds:
       - typst compile imgs/example.typ imgs/example.pdf --root .
       - inkscape -o imgs/example.svg imgs/example.pdf
   publish:
+    desc: "Copy package to official typst preview repo."
     cmds:
       - mkdir -p {{.preview_repo_path}}/{{.package_name}}/{{.package_version}}
       - cp ./typst.toml {{.preview_repo_path}}/{{.package_name}}/{{.package_version}}/
       - cp ./lib.typ {{.preview_repo_path}}/{{.package_name}}/{{.package_version}}/
       - cp ./README.md {{.preview_repo_path}}/{{.package_name}}/{{.package_version}}/
+      - cp ./LICENSE {{.preview_repo_path}}/{{.package_name}}/{{.package_version}}/
