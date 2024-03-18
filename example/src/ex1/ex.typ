@@ -1,4 +1,4 @@
-#import "@local/tutor:0.3.0": points, checkbox
+#import "@local/tutor:0.4.0": points, checkbox
 
 #let exercise(cfg) = [
 #heading(level:cfg.level, 

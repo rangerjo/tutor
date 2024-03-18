@@ -104,6 +104,64 @@ This would then give the following output in question mode (`#(cfg.sol=false)`)
 and in solution mode (`#(cfg.sol=true)`):
 ![Example document in solution mode](https://raw.githubusercontent.com/rangerjo/tutor/main/imgs/example.svg)
 
+## Utilities
+
+### lines
+
+`lines(cfg, count)` prints `count` lines for students to write their answer.
+
+Configuration:
+
+```typst
+// Vertical line spacing between rows. 
+#(cfg.utils.lines.spacing = 8mm)
+```
+
+### grid
+
+`grid(cfg, width, height)` prints a grid for students to write their answer.
+
+Configuration:
+
+```typst
+// Grid spacing. 
+#(cfg.utils.grid.spacing = 4mm)
+```
+
+### checkbox
+
+`checkbox(cfg, answer)` shows a checkbox. In solution mode, the checkbox is shown filled out.
+
+Configuration:
+
+```typst
+// Symbol to show if answer is true 
+#(cfg.utils.checkbox.sym_true = "☒")
+// Symbol to show if answer is false
+#(cfg.utils.checkbox.sym_false = "☐")
+// Symbol to show in question mode
+#(cfg.utils.checkbox.sym_question = "☐")
+```
+
+### points
+
+`points(cfg, num)` displays the given `num` while adding its value to the total points counter.
+
+Configuration: none
+
+### totalpoints
+
+`totalpoints(cfg)` shows the final value of the total points counter.
+
+
+Configuration:
+
+```typst
+// If points() is used in the outline, totalpoints value becomes doubled.
+// By setting outline to true, totalpoints gets divided by half.
+#(cfg.utils.totalpoints.outline = false)
+```
+
 ## Configuration
 
 `tutor` is designed to create exams and solutions with one single document source. Furthermore, the individual utilities provided by `tutor` can be configured. This can be done in one of three ways:

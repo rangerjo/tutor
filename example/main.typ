@@ -1,5 +1,5 @@
 
-#import "@local/tutor:0.3.0": totalpoints, lines, default-config
+#import "@local/tutor:0.4.0": totalpoints, lines, default-config
 
 #import "src/ex1/ex.typ" as ex1
 #import "src/ex2/ex.typ" as ex2

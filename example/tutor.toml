@@ -10,5 +10,8 @@ sym_true = '☒'
 [utils.lines]
 spacing = '8mm'
 
+[utils.grid]
+spacing = '4mm'
+
 [utils.totalpoints]
 outline = true

@@ -5,6 +5,7 @@
     level: 1,
     utils: (
       lines: ( spacing: 10mm ),
+      grid: ( spacing: 4mm ),
       checkbox: (
         sym_true: "☒",
         sym_false: "☐",
@@ -59,4 +60,18 @@
     content += [#v(spacing) #line(length:100%) ]
   }
   return content
+}
+
+#let grid(cfg, width, height) = {
+  let spacing = cfg.utils.grid.spacing
+  if type(spacing) == "string" {
+    spacing = eval(spacing)
+  }
+  
+  let pat = pattern(size: (spacing, spacing))[
+    #place(line(start: (0%, 0%), end: (0%, 100%), stroke: 0.2pt))
+    #place(line(start: (0%, 0%), end: (100%, 0%), stroke: 0.2pt))
+  ]
+
+  align(center,rect(fill: pat, width: width, height: height, stroke: 0.2pt))
 }
