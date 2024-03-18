@@ -102,13 +102,13 @@ List two differences between HL7v2 and FHIR:
 
 This would then give the following output in question mode (`#(cfg.sol=false)`)
 and in solution mode (`#(cfg.sol=true)`):
-![Example document in solution mode](https://raw.githubusercontent.com/rangerjo/tutor/main/imgs/example.svg)
+![Example document in solution mode](https://raw.githubusercontent.com/rangerjo/tutor/main/imgs/example_mod.svg)
 
 ## Utilities
 
 ### lines
 
-`lines(cfg, count)` prints `count` lines for students to write their answer.
+`#lines(cfg, count)` prints `count` lines for students to write their answer.
 
 Configuration:
 
@@ -119,7 +119,7 @@ Configuration:
 
 ### grid
 
-`grid(cfg, width, height)` prints a grid for students to write their answer.
+`#grid(cfg, width, height)` prints a grid for students to write their answer.
 
 Configuration:
 
@@ -130,7 +130,7 @@ Configuration:
 
 ### checkbox
 
-`checkbox(cfg, answer)` shows a checkbox. In solution mode, the checkbox is shown filled out.
+`#checkbox(cfg, answer)` shows a checkbox. In solution mode, the checkbox is shown filled out.
 
 Configuration:
 
@@ -145,13 +145,13 @@ Configuration:
 
 ### points
 
-`points(cfg, num)` displays the given `num` while adding its value to the total points counter.
+`#points(cfg, num)` displays the given `num` while adding its value to the total points counter.
 
 Configuration: none
 
 ### totalpoints
 
-`totalpoints(cfg)` shows the final value of the total points counter.
+`#totalpoints(cfg)` shows the final value of the total points counter.
 
 
 Configuration:
