@@ -62,6 +62,15 @@
   return content
 }
 
+
+#let blankline(cfg, width, answer) = {
+  if cfg.sol {
+    box(width: width, baseline: 5pt, stroke: (bottom: black),text(baseline:-5pt)[#answer])
+  } else {
+    box(width: width, baseline: 5pt, stroke: (bottom: black))[]
+  }
+}
+
 #let grid(cfg, width, height) = {
   let spacing = cfg.utils.grid.spacing
   if type(spacing) == "string" {

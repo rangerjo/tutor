@@ -4,7 +4,8 @@ version: '3'
 
 vars:
   package_name: tutor
-  package_version: 0.4.0
+  package_version: 
+    sh: tomlq -r .package.version typst.toml
   local_repo_path: ~/.local/share/typst/packages/local
   preview_repo_path: /home/jonas/temp/packages/packages/preview
 
