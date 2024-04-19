@@ -3,6 +3,7 @@
   let cfg = (
     sol: false,
     level: 1,
+    test: true,
     utils: (
       lines: ( spacing: 10mm ),
       grid: ( spacing: 4mm ),
@@ -19,6 +20,31 @@
   return cfg
 }
 
+/// Show a checkbox.
+///
+/// *Example in Question Mode:*
+/// 
+/// #example(`[
+/// #let cfg = tutor.default-config()
+/// What does FHIR stand for?
+/// - #tutor.checkbox(cfg, false) Finally He Is Real
+/// - #tutor.checkbox(cfg, true) Fast Health Interoperability Resources
+/// ]`)
+/// 
+/// *Example in Solution Mode:*
+///
+/// #example(`[
+/// #let cfg = tutor.default-config()
+/// #(cfg.sol = true) // enable solutions
+/// What does FHIR stand for?
+/// - #tutor.checkbox(cfg, false) Finally He Is Real
+/// - #tutor.checkbox(cfg, true) Fast Health Interoperability Resources
+/// ]`)
+/// 
+/// 
+/// - cfg (dictionary): Global Tutor configuration
+/// - answer (bool): Wheter the checkbox should be filled in solution mode.
+/// -> content
 #let checkbox(cfg, answer) = {
   if cfg.sol {
     if answer {
