@@ -1,0 +1,39 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  docname: manual.pdf
+  file: manual
+  builddir: build
+
+tasks:
+  default:
+    cmds:
+      - go-task --list
+  build:
+    desc: Compile {{.file}}.typ to {{.builddir}}/{{.docname}}
+    cmds:
+      - typst compile --root ../ {{.file}}.typ {{.builddir}}/{{.docname}}
+    deps: [mkdirs]
+  mkdirs:
+    desc: Create a temporary build dir.
+    cmds:
+      - mkdir -p {{.builddir}}
+      - mkdir -p history
+  clean:
+    desc: Remove the temporary build dir.
+    cmds:
+      - rm -r {{.builddir}}
+  watch:
+    desc: Watch for file changes and compile {{.file}}.typ to {{.builddir}}/{{.docname}}.
+    cmds:
+      - typst watch --root ../ {{.file}}.typ {{.builddir}}/{{.docname}}
+  save:
+    desc: Save current document into the history directory.
+    cmds:
+      - cp {{.builddir}}/{{.docname}} history/
+  open:
+    desc: Open the document.
+    cmds:
+      - xdg-open {{.builddir}}/{{.docname}}
