@@ -14,7 +14,7 @@ Currently the following features are supported:
 ### Minimal Example
 
 ```typst
-#import "@local/tutor:0.4.0": points, totalpoints, lines, checkbox, default-config
+#import "@local/tutor:0.6.1": points, totalpoints, lines, checkbox, default-config
 
 #let cfg = default-config()
 // enable solution mode
@@ -51,7 +51,7 @@ Check [example](https://github.com/rangerjo/tutor/tree/main/example) for a more 
 Every directory in `src` holds one self-contained exercise. The exercises can be imported into `main.typ`:
 
 ```typst
-#import "@local/tutor:0.4.0": totalpoints, lines, default-config
+#import "@local/tutor:0.6.1": totalpoints, lines, default-config
 
 #import "src/ex1/ex.typ" as ex1
 #import "src/ex2/ex.typ" as ex2
@@ -67,7 +67,7 @@ An exercise is a folder that contains an `ex.typ` file along with any other asse
 
 `src/ex1/ex.typ`
 ```typst
-#import "@local/tutor:0.4.0": points, checkbox
+#import "@local/tutor:0.6.1": points, checkbox
 
 #let exercise(cfg) = [
 #heading(level:cfg.lvl, [Abbreviation FHIR (#points(1) point)])
@@ -88,7 +88,7 @@ What does FHIR stand for?
 Finally this second example shows the `#lines()` function.
 `src/ex2/ex.typ`
 ```typst
-#import "@local/tutor:0.4.0": points, lines 
+#import "@local/tutor:0.6.1": points, lines 
 
 #let exercise(cfg) = [
 #heading(level:cfg.lvl, [FHIR vs HL7v2 (#points(4.5) points)])
@@ -160,6 +160,31 @@ Configuration:
 // If points() is used in the outline, totalpoints value becomes doubled.
 // By setting outline to true, totalpoints gets divided by half.
 #(cfg.utils.totalpoints.outline = false)
+```
+
+## Modes
+
+`tutor` comes with a solution and a test mode.
+
+### solution mode
+
+Solution mode controls wheter solutions are shown or not. This mode controls eg. the utility `#checkbox(cfg, answer)`.
+
+1. `(cfg.sol = false)`: Solutions are hidden. This is used for the actual exam handed out to students.
+2. `(cfg.sol = true)`: Solutions are shown. This is used to create the exam solutions.
+
+### test mode
+
+Test mode can be used to show or hide additional information. In test mode, one might want 
+1. `(cfg.test = true)`: Test information are shown. Use this eg. to display `#points(4)`. This is used in case the document is used as an exam/test.
+
+2. `(cfg.test = false)`: Test information are hidden. This is used in case the document is used as an excerise.
+
+The following would show the points only in test mode.
+```typst
+#if cfg.test {
+  #points(4)
+}
 ```
 
 ## Configuration

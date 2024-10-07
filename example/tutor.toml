@@ -1,5 +1,6 @@
 level = 1
 sol = true
+test = true
 
 [utils]
 [utils.checkbox]

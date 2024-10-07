@@ -1,15 +1,18 @@
 
-#import "@local/tutor:0.4.0": totalpoints, lines, default-config
+#import "@local/tutor:0.6.1": totalpoints, lines, default-config
 
 #import "src/ex1/ex.typ" as ex1
 #import "src/ex2/ex.typ" as ex2
 
 #let cfg = toml("tutor.toml")
 
-#if sys.inputs.tutor_sol == "true" {
-  (cfg.sol = true)
-} else if sys.inputs.tutor_sol == "false" {
-  (cfg.sol = false)
+
+#if "tutor_sol" in sys.inputs {
+  if sys.inputs.tutor_sol == "true" {
+    (cfg.sol = true)
+  } else if sys.inputs.tutor_sol == "false" {
+    (cfg.sol = false)
+  }
 }
 
 #set heading(numbering: "1.1")
