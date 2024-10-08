@@ -173,6 +173,11 @@ Solution mode controls wheter solutions are shown or not. This mode controls eg.
 1. `(cfg.sol = false)`: Solutions are hidden. This is used for the actual exam handed out to students.
 2. `(cfg.sol = true)`: Solutions are shown. This is used to create the exam solutions.
 
+You can also use the following helper functions:
+
+* `if-sol(cfg,[Content only shown in solution mode.])`
+* `if-sol-else(cfg,[Content only shown in solution mode.], [Content only shown in exam mode.])`
+
 ### test mode
 
 Test mode can be used to show or hide additional information. In test mode, one might want 
@@ -186,6 +191,11 @@ The following would show the points only in test mode.
   #points(4)
 }
 ```
+
+Or you can use the following helper functions:
+
+* `if-test(cfg,[Content only shown in test mode.])`
+* `if-test-else(cfg,[Content only shown in test mode.], [Content only shown in exercise mode.])`
 
 ## Configuration
 
