@@ -199,7 +199,7 @@
 /// - cfg (dictionary): Global Tutor configuration
 /// - sol (content): Content to be shown in solution mode
 /// -> content
-#let if_sol(cfg, sol) = {
+#let if-sol(cfg, sol) = {
   if cfg.sol {
     sol
   }
@@ -211,7 +211,7 @@
 /// - sol (content): Content to be shown in solution mode
 /// - question (content): Content to be shown in question mode
 /// -> content
-#let if_sol_else(cfg, sol, question) = {
+#let if-sol-else(cfg, sol, question) = {
   if cfg.sol {
     sol
   } else {
@@ -224,7 +224,7 @@
 /// - cfg (dictionary): Global Tutor configuration
 /// - test (content): Content to be shown in test mode
 /// -> content
-#let if_test(cfg, test) = {
+#let if-test(cfg, test) = {
   if cfg.test {
     test
   }
@@ -234,9 +234,9 @@
 ///
 /// - cfg (dictionary): Global Tutor configuration
 /// - test (content): Content to be shown in test mode
-/// - exercise (content): Content to be shown in question mode
+/// - exercise (content): Content to be shown in exercise mode
 /// -> content
-#let if_test_else(cfg, test, exercise) = {
+#let if-test-else(cfg, test, exercise) = {
   if cfg.test {
     test
   } else {
