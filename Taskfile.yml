@@ -4,9 +4,9 @@ version: '3'
 
 vars:
   package_name: 
-    sh: tomlq -r .package.name typst.toml
+    sh: tq -f typst.toml .package.name
   package_version: 
-    sh: tomlq -r .package.version typst.toml
+    sh: tq -f typst.toml .package.version
   local_repo_path: ~/.local/share/typst/packages/local
   preview_repo_path: /home/jonas/temp/packages/packages/preview
 
