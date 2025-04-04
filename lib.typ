@@ -116,7 +116,7 @@
 #let lines(cfg, count) = {
   let content = []
   let spacing = cfg.utils.lines.spacing
-  if type(spacing) == "string" {
+  if type(spacing) == str {
     spacing = eval(spacing)
   }
   for n in range(count) {
@@ -142,11 +142,11 @@
 /// -> content
 #let grid(cfg, width, height) = {
   let spacing = cfg.utils.grid.spacing
-  if type(spacing) == "string" {
+  if type(spacing) == str {
     spacing = eval(spacing)
   }
 
-  let pat = pattern(size: (spacing, spacing))[
+  let pat = tiling(size: (spacing, spacing))[
     #place(line(start: (0%, 0%), end: (0%, 100%), stroke: 0.2pt))
     #place(line(start: (0%, 0%), end: (100%, 0%), stroke: 0.2pt))
   ]

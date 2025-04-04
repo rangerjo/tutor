@@ -1,17 +1,20 @@
-#import "@local/tutor:0.4.0": points, checkbox
+#import "../common/deps.typ": tutor
+#import tutor: points, checkbox
 
 #let exercise(cfg) = [
-#heading(level:cfg.level, 
-[Abbreviation FHIR (#points(1) point)])
+  #heading(
+    level: cfg.level,
+    [Abbreviation FHIR (#points(1) point)],
+  )
 
-What does FHIR stand for?
+  What does FHIR stand for?
 
-#set list(marker: none)
-- #checkbox(cfg, false)  Finally He Is Real
-- #checkbox(cfg, true)   Fast Health Interoperability Resources
-- #checkbox(cfg, false)   First Health Inactivation Restriction
+  #set list(marker: none)
+  - #checkbox(cfg, false) Finally He Is Real
+  - #checkbox(cfg, true) Fast Health Interoperability Resources
+  - #checkbox(cfg, false) First Health Inactivation Restriction
 
-#if cfg.sol {
-  [ Further explanation: FHIR is the new standard developed by HL7. ]
-}
+  #if cfg.sol {
+    [ Further explanation: FHIR is the new standard developed by HL7. ]
+  }
 ]

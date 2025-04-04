@@ -1,5 +1,4 @@
-
-#import "@local/tutor:0.6.1": totalpoints, lines, default-config
+#import "@local/tutor:0.8.0": totalpoints, lines, default-config
 
 #import "src/ex1/ex.typ" as ex1
 #import "src/ex2/ex.typ" as ex2
@@ -25,8 +24,8 @@
     rows: 10mm,
     gutter: 5mm,
     // align: left + horizon,
-   [Points:  $underline(#h(4cm))$ / #totalpoints(cfg)],
-   [Grade: $underline(#h(6cm))$],
+    [Points: $underline(#h(4cm))$ / #totalpoints(cfg)],
+    [Grade: $underline(#h(6cm))$],
   )
 ]
 
