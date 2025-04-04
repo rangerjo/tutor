@@ -14,7 +14,7 @@ Currently the following features are supported:
 ### Minimal Example
 
 ```typst
-#import "@local/tutor:0.6.1": points, totalpoints, lines, checkbox, default-config
+#import "@local/tutor:0.8.0": points, totalpoints, lines, checkbox, default-config
 
 #let cfg = default-config()
 // enable solution mode
@@ -51,7 +51,7 @@ Check [example](https://github.com/rangerjo/tutor/tree/main/example) for a more 
 Every directory in `src` holds one self-contained exercise. The exercises can be imported into `main.typ`:
 
 ```typst
-#import "@local/tutor:0.6.1": totalpoints, lines, default-config
+#import "@local/tutor:0.8.0": totalpoints, lines, default-config
 
 #import "src/ex1/ex.typ" as ex1
 #import "src/ex2/ex.typ" as ex2
@@ -67,7 +67,7 @@ An exercise is a folder that contains an `ex.typ` file along with any other asse
 
 `src/ex1/ex.typ`
 ```typst
-#import "@local/tutor:0.6.1": points, checkbox
+#import "@local/tutor:0.8.0": points, checkbox
 
 #let exercise(cfg) = [
 #heading(level:cfg.lvl, [Abbreviation FHIR (#points(1) point)])
@@ -88,7 +88,7 @@ What does FHIR stand for?
 Finally this second example shows the `#lines()` function.
 `src/ex2/ex.typ`
 ```typst
-#import "@local/tutor:0.6.1": points, lines 
+#import "@local/tutor:0.8.0": points, lines 
 
 #let exercise(cfg) = [
 #heading(level:cfg.lvl, [FHIR vs HL7v2 (#points(4.5) points)])
